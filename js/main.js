@@ -125,9 +125,9 @@ function init() {
         });
 
         console.log("Alien cargado correctamente");
-        for(let i = 0; i < 5; i++) spawnObstacle();
+        for(let i = 0; i < 2; i++) spawnObstacle();
         // Genera 15 piedras decorativas
-        for(let i = 0; i < 15; i++) spawnDecoration();
+        for(let i = 0; i < 5; i++) spawnDecoration();
 
     }, undefined, (error) => {
         console.error("Error cargando Alien:", error);
