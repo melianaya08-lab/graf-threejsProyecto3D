@@ -152,13 +152,13 @@ function init() {
 
         loadAnim(loader, 'Running.fbx', 'correr', true);
 
-        loadAnim(loader, 'Big Jump.fbx', 'saltar', false);
+        loadAnim(loader, 'BigJump.fbx', 'saltar', false);
 
         loadAnim(loader, 'Martelo 2.fbx', 'patada', false);
     });
 
     // ALIEN
-    loader.load('AlienAttack.fbx', (fbx) => {
+    loader.load('AlienAttack1.fbx', (fbx) => {
 
         alienModel = fbx;
 
