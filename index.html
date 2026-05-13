@@ -1,182 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <title>Alien Runner 3D</title>
 
-<style>
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background: #050505;
-}
+<link rel="stylesheet" href="css/style.css">
 
-/* FONDO */
-#startScreen {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle, #1a0000, #000 80%);
-    z-index: 20;
-}
-
-/* PANEL */
-.panel {
-    width: 850px;
-    background: rgba(10, 10, 10, 0.95);
-    border: 2px solid #ff0000;
-    box-shadow: 0 0 40px red;
-    padding: 25px;
-    display: flex;
-}
-
-/* MENU */
-.menu {
-    width: 35%;
-    border-right: 1px solid red;
-    padding-right: 15px;
-}
-
-/* BOTONES */
-.btn {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-    background: #1a0000;
-    color: #fff;
-    border: 1px solid red;
-    cursor: pointer;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: 0.3s;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, red, transparent);
-    transition: 0.4s;
-}
-
-.btn:hover::before {
-    left: 100%;
-}
-
-.btn:hover {
-    background: #330000;
-    box-shadow: 0 0 15px red;
-}
-
-/* CONTENIDO */
-.content {
-    width: 65%;
-    padding-left: 20px;
-    color: #ddd;
-}
-
-/* TITULO */
-.title {
-    font-size: 32px;
-    font-weight: 900;
-    text-align: center;
-    color: #ff3b3b;
-    letter-spacing: 2px;
-    text-shadow:
-        0 0 5px #ff0000,
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 40px #ff0000;
-    margin-bottom: 10px;
-}
-
-/* TEXTO */
-.desc {
-    text-align: center;
-    color: #ff8080;
-    margin-top: 10px;
-}
-
-/* SECCIONES */
-.section {
-    display: none;
-}
-
-.active {
-    display: block;
-}
-
-/* IMAGEN */
-.homeImg {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 15px auto;
-}
-
-/* GAME */
-#container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-/* HUD */
-#ui-container {
-    display: none;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
-    color: white;
-    background: rgba(0,0,0,0.6);
-    padding: 15px 25px;
-    border-radius: 10px;
-}
-
-#contenedor-vida {
-    width: 220px;
-    height: 20px;
-    background: #333;
-    border: 2px solid white;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#barra-vida {
-    width: 100%;
-    height: 100%;
-    background: #ff3333;
-    transition: width 0.3s ease;
-}
-
-/* GAME OVER */
-#game-over {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.85);
-    z-index: 30;
-    color: white;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-</style>
 </head>
 
 <body>
@@ -186,33 +16,92 @@ body {
     <div class="panel">
 
         <div class="menu">
-            <button class="btn" onclick="showSection('home')">HOME</button>
-            <button class="btn" id="startBtn">START</button>
-            <button class="btn" onclick="showSection('credits')">CREDITS</button>
-            <button class="btn" onclick="showSection('help')">HELP</button>
-            <button class="btn" onclick="exitGame()">EXIT</button>
+
+            <button class="btn"
+            onclick="showSection('home')">
+                HOME
+            </button>
+
+            <button class="btn"
+            id="startBtn">
+                START
+            </button>
+
+            <button class="btn"
+            onclick="showSection('credits')">
+                CREDITS
+            </button>
+
+            <button class="btn"
+            onclick="showSection('help')">
+                HELP
+            </button>
+
+            <button class="btn"
+            onclick="exitGame()">
+                EXIT
+            </button>
+
         </div>
 
         <div class="content">
 
-            <div id="home" class="section active">
-                <div class="title">ALIEN RUNNER</div>
-                <p class="desc">Sobrevive a la invasión alienígena</p>
-                <img src="textures/alienInicio.jpg" class="homeImg">
+            <div id="home"
+            class="section active">
+
+                <div class="title">
+                    ALIEN RUNNER
+                </div>
+
+                <p class="desc">
+                    Sobrevive a la invasión alienígena
+                </p>
+
+                <img src="textures/alienInicio.jpg"
+                class="homeImg">
+
             </div>
 
-            <div id="credits" class="section">
-                <div class="title">CRÉDITOS</div>
-                <p class="desc">Nelida Yareni Cruz Perez - 23200824</p>
-                <p class="desc">Melina Villa Anaya - 23200906</p>
-                <p class="desc">Materia: Graficación</p>
+            <div id="credits"
+            class="section">
+
+                <div class="title">
+                    CRÉDITOS
+                </div>
+
+                <p class="desc">
+                    Nelida Yareni Cruz Perez - 23200824
+                </p>
+
+                <p class="desc">
+                    Melina Villa Anaya - 23200906
+                </p>
+
+                <p class="desc">
+                    Materia: Graficación
+                </p>
+
             </div>
 
-            <div id="help" class="section">
-                <div class="title">CONTROLES</div>
-                <p class="desc">A / D → Cambiar carril</p>
-                <p class="desc">ESPACIO → Saltar</p>
-                <p class="desc">K → Patear</p>
+            <div id="help"
+            class="section">
+
+                <div class="title">
+                    CONTROLES
+                </div>
+
+                <p class="desc">
+                    A / D → Cambiar carril
+                </p>
+
+                <p class="desc">
+                    ESPACIO → Saltar
+                </p>
+
+                <p class="desc">
+                    K → Patear
+                </p>
+
             </div>
 
         </div>
@@ -226,10 +115,22 @@ body {
 <!-- HUD -->
 <div id="ui-container">
 
-    <h2 id="texto-distancia">Metros: 0</h2>
+    <h2 id="texto-distancia">
+        Metros: 0
+    </h2>
 
-    <div id="contenedor-vida">
-        <div id="barra-vida"></div>
+    <div id="vida-ui">
+
+        <div id="corazon">
+            ❤️
+        </div>
+
+        <div id="contenedor-vida">
+
+            <div id="barra-vida"></div>
+
+        </div>
+
     </div>
 
 </div>
@@ -237,7 +138,7 @@ body {
 <!-- GAME OVER -->
 <div id="game-over">
 
-    <h1 style="font-size:5rem; color:#ff3333;">
+    <h1>
         GAME OVER
     </h1>
 
@@ -245,15 +146,11 @@ body {
         Metros recorridos: 0
     </h2>
 
-    <button onclick="location.reload()"
-        style="
-        padding:15px 30px;
-        font-size:1.2rem;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:bold;">
+    <button id="btn-restart"
+    onclick="location.reload()">
+
         JUGAR DE NUEVO
+
     </button>
 
 </div>
@@ -267,7 +164,8 @@ body {
 }
 </script>
 
-<script type="module" src="js/main.js"></script>
+<script type="module"
+src="js/main.js"></script>
 
 <script>
 
@@ -281,6 +179,7 @@ function showSection(id){
 }
 
 function exitGame(){
+
     alert("Gracias por jugar 👽");
 }
 
@@ -293,7 +192,9 @@ document.getElementById('startBtn')
     document.getElementById('ui-container')
     .style.display = 'block';
 
-    window.dispatchEvent(new Event('iniciarJuego'));
+    window.dispatchEvent(
+        new Event('iniciarJuego')
+    );
 });
 
 </script>
