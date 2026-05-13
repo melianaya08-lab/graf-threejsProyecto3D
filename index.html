@@ -104,9 +104,6 @@ body {
 .desc {
     text-align: center;
     color: #ff8080;
-    text-shadow:
-        0 0 3px #f3f2f2,
-        0 0 6px #d84343;
     margin-top: 10px;
 }
 
@@ -119,7 +116,7 @@ body {
     display: block;
 }
 
-/* GIF */
+/* IMAGEN */
 .homeImg {
     max-width: 300px;
     width: 100%;
@@ -134,13 +131,60 @@ body {
     width: 100%;
     height: 100%;
 }
+
+/* HUD */
+#ui-container {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+#contenedor-vida {
+    width: 220px;
+    height: 20px;
+    background: #333;
+    border: 2px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#barra-vida {
+    width: 100%;
+    height: 100%;
+    background: #ff3333;
+    transition: width 0.3s ease;
+}
+
+/* GAME OVER */
+#game-over {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 30;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 </style>
 </head>
 
 <body>
 
 <div id="startScreen">
+
     <div class="panel">
+
         <div class="menu">
             <button class="btn" onclick="showSection('home')">HOME</button>
             <button class="btn" id="startBtn">START</button>
@@ -150,6 +194,7 @@ body {
         </div>
 
         <div class="content">
+
             <div id="home" class="section active">
                 <div class="title">ALIEN RUNNER</div>
                 <p class="desc">Sobrevive a la invasión alienígena</p>
@@ -160,7 +205,6 @@ body {
                 <div class="title">CRÉDITOS</div>
                 <p class="desc">Nelida Yareni Cruz Perez - 23200824</p>
                 <p class="desc">Melina Villa Anaya - 23200906</p>
-                <p class="desc">Carrera: Ing. Sistemas Computacionales</p>
                 <p class="desc">Materia: Graficación</p>
             </div>
 
@@ -170,31 +214,55 @@ body {
                 <p class="desc">ESPACIO → Saltar</p>
                 <p class="desc">K → Patear</p>
             </div>
+
         </div>
+
     </div>
+
 </div>
 
 <div id="container"></div>
 
-<div id="ui-container" style="display: none; position: absolute; top: 20px; left: 20px; z-index: 10; color: white; font-family: sans-serif; background-color: rgba(0, 0, 0, 0.6); padding: 15px 25px; border-radius: 10px;">
-    <h2 id="texto-distancia" style="margin: 0 0 10px 0; font-size: 1rem;">Metros: 0</h2>
-    
-    <div style="width: 150px; height: 7px; background-color: #444; border-radius: 4px; overflow: hidden;">
-        <div id="barra-vida" style="width: 100%; height: 100%; background-color: #ff3333; transition: width 0.3s ease;"></div>
+<!-- HUD -->
+<div id="ui-container">
+
+    <h2 id="texto-distancia">Metros: 0</h2>
+
+    <div id="contenedor-vida">
+        <div id="barra-vida"></div>
     </div>
+
 </div>
 
-<div id="game-over" style="display: none; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.85); z-index: 30; color: white; font-family: sans-serif; flex-direction: column; justify-content: center; align-items: center;">
-    <h1 style="font-size: 5rem; color: #ff3333; margin: 0;">GAME OVER</h1>
-    <h2 id="puntaje-final" style="font-size: 1.5rem; margin: 20px 0;">Metros recorridos: 0</h2>
-    <button onclick="location.reload()" style="padding: 15px 30px; font-size: 1.2rem; background-color: white; color: black; border: none; border-radius: 10px; cursor: pointer; font-weight: bold;">JUGAR DE NUEVO</button>
+<!-- GAME OVER -->
+<div id="game-over">
+
+    <h1 style="font-size:5rem; color:#ff3333;">
+        GAME OVER
+    </h1>
+
+    <h2 id="puntaje-final">
+        Metros recorridos: 0
+    </h2>
+
+    <button onclick="location.reload()"
+        style="
+        padding:15px 30px;
+        font-size:1.2rem;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-weight:bold;">
+        JUGAR DE NUEVO
+    </button>
+
 </div>
 
 <script type="importmap">
 {
     "imports": {
-        "three": "https://unpkg.com/three@0.155.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.155.0/examples/jsm/"
+        "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
     }
 }
 </script>
@@ -202,27 +270,32 @@ body {
 <script type="module" src="js/main.js"></script>
 
 <script>
-// Manejo de las pestañas del menú
+
 function showSection(id){
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.section')
+    .forEach(s => s.classList.remove('active'));
+
+    document.getElementById(id)
+    .classList.add('active');
 }
 
 function exitGame(){
     alert("Gracias por jugar 👽");
 }
 
-// NUEVO: Lógica del botón START
-document.getElementById('startBtn').addEventListener('click', () => {
-    // 1. Ocultamos el menú principal
-    document.getElementById('startScreen').style.display = 'none';
-    
-    // 2. Mostramos la barra de vida y distancia
-    document.getElementById('ui-container').style.display = 'block';
+document.getElementById('startBtn')
+.addEventListener('click', () => {
 
-    //Enviamos una señal a main.js para que arranque todo
+    document.getElementById('startScreen')
+    .style.display = 'none';
+
+    document.getElementById('ui-container')
+    .style.display = 'block';
+
     window.dispatchEvent(new Event('iniciarJuego'));
 });
+
 </script>
 
 </body>
